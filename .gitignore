@@ -1,0 +1,15 @@
+bi/
+CNN_BERT/
+data/
+data_parsing/
+Downstream_task/Classification/mmbt/output/
+Downstream_task/Classification/mmbt/wandb/
+Downstream_task/report_generation_and_vqa/
+Downstream_task/retrieval/
+Downstream_task/Retrieval/
+par/
+wandb/
+bar.tar.gz
+bi.tar
+data_RAD.tar.gz
+.idea/
