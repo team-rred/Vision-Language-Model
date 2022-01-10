@@ -126,7 +126,7 @@ def get_data_loaders(args):
     args.vocab_sz = vocab.vocab_sz
 
 ########## report img pair 불러와서 참조
-    report_img_pair_info_path = '/home/workspace/Multi-modality-Self-supervision/data/mimic-cxr/mimim-cxr-nlp_210904.csv'
+    report_img_pair_info_path = 'data/mimic-cxr/mimim-cxr-nlp_210904.csv'
     report_img_pair_info = pd.read_csv(report_img_pair_info_path)
 ############
 

@@ -40,7 +40,7 @@ def get_args(parser):
 
     now = datetime.now()
     now = now.strftime('%Y-%m-%d')
-    output_path = "/home/workspace/Multi-modality-Self-supervision/Downstream_task/Classification/mmbt/output/" + str(now)
+    output_path = "Downstream_task/Classification/mmbt/output/" + str(now)
     if not os.path.exists(output_path):
         os.mkdir(output_path)
         os.chmod(output_path, 0o777)
@@ -49,12 +49,12 @@ def get_args(parser):
     # save_name
     parser.add_argument("--save_name", type=str, default='mimic_par', help='file name to save combination of daset and loaddir name')
 
-    parser.add_argument("--loaddir", type=str, default='/home/workspace/Multi-modality-Self-supervision/bi')
+    parser.add_argument("--loaddir", type=str, default='bi')
     parser.add_argument("--name", type=str, default="scenario_name")
 
 
     parser.add_argument("--openi", type=bool, default=False)
-    parser.add_argument("--data_path", type=str, default='/home/workspace/Multi-modality-Self-supervision/data/mimic-cxr',
+    parser.add_argument("--data_path", type=str, default='data/mimic-cxr',
                         help="dset path for training")
 
 
@@ -83,7 +83,7 @@ def get_args(parser):
     parser.add_argument("--bert_model", type=str, default="bert-base-uncased",
                         choices=["bert-base-uncased"])
     parser.add_argument("--init_model", type=str, default="bert-base-uncased",
-                        choices=["bert-base-uncased", "/home/workspace/Multi-modality-Self-supervision/bi", "/home/workspace/Multi-modality-Self-supervision/par"])
+                        choices=["bert-base-uncased"])
 
     parser.add_argument("--drop_img_percent", type=float, default=0.0)
     parser.add_argument("--dropout", type=float, default=0.1)
