@@ -29,14 +29,14 @@ def get_args(parser):
 
     parser.add_argument("--seed", type=int, default=1125)
     parser.add_argument("--batch_sz", type=int, default=32)
-    parser.add_argument("--max_epochs", type=int, default=300)
+    parser.add_argument("--max_epochs", type=int, default=50)
 
     parser.add_argument("--model", type=str, default="mmbt")
     parser.add_argument("--task_type", type=str, default="classification", choices=["multilabel", "classification"])
 
     parser.add_argument("--device", type=str, default='?')
     parser.add_argument("--n_workers", type=int, default=24)
-    parser.add_argument("--patience", type=int, default=100)
+    parser.add_argument("--patience", type=int, default=10)
 
     now = datetime.now()
     now = now.strftime('%Y-%m-%d')
@@ -56,7 +56,6 @@ def get_args(parser):
     parser.add_argument("--openi", type=bool, default=False)
     parser.add_argument("--data_path", type=str, default='data/mimic-cxr',
                         help="dset path for training")
-
 
 ##########################
 ##########################
