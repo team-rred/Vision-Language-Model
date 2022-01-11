@@ -87,7 +87,7 @@ def collate_fn(batch, args):
     if args.task_type == "multilabel":
         # Multilabel case
         tgt_tensor = torch.stack([row[3] for row in batch])
-    elif args.task_type =='classification':
+    elif args.task_type =='classification' or args.task_type =='binary':
         # Mulitclass case
         tgt_tensor = torch.tensor([row[3] for row in batch]).long()
     else:
@@ -117,7 +117,7 @@ def get_data_loaders(args):
 #     )
 
 # ###############################TEMP
-    args.labels = [0,1,2,3]
+    args.labels = [0,1,2,3] if args.task_type == "classification" else [0, 1]
 #     args.label_freqs = Counter({'0':45772,'1':45772})
 #################################
 

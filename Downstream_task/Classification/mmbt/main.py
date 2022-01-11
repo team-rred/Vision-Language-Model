@@ -32,7 +32,7 @@ def get_args(parser):
     parser.add_argument("--max_epochs", type=int, default=50)
 
     parser.add_argument("--model", type=str, default="mmbt")
-    parser.add_argument("--task_type", type=str, default="classification", choices=["multilabel", "classification"])
+    parser.add_argument("--task_type", type=str, default="binary", choices=["multilabel", "classification", "binary"])
 
     parser.add_argument("--device", type=str, default='?')
     parser.add_argument("--n_workers", type=int, default=24)
@@ -108,7 +108,7 @@ def get_args(parser):
     parser.add_argument("--max_seq_len_findings", type=int, default=340)
     parser.add_argument("--max_seq_len_impression", type=int, default=172)
     # parser.add_argument("--num_image_embeds", type=int, default=64)
-    parser.add_argument("--num_image_embeds", type=int, default=0)
+    parser.add_argument("--num_image_embeds", type=int, default=32)
 
     parser.add_argument("--warmup", type=float, default=0.1)
     parser.add_argument("--weight_classes", type=int, default=1)
@@ -385,6 +385,22 @@ def train(args):
             val = list(classACC)
             title = ['Accuracy', 'micro_f1', 'macro_f1'] + key
             result = [metrics["acc"], metrics["micro_f1"], metrics["macro_f1"]] + val
+            
+        elif  args.task_type == "binary":
+            wandb.log({
+                "Macro_f1 f1 scroe": metrics["macro_f1"],
+                "Micro f1 score": metrics["micro_f1"],
+                "Train loss": np.mean(train_losses),
+                "Val loss": metrics["loss"],
+                "Accuracy": metrics["acc"],  # AUC per class
+            })
+
+            csv_save_name = args.save_name
+            save_path = args.savedir + '/' + csv_save_name + '.csv'
+            f = open(save_path, 'w', encoding='utf-8')
+            wr = csv.writer(f)
+            title = ['Accuracy', 'micro_f1', 'macro_f1']
+            result = [metrics["acc"], metrics["micro_f1"], metrics["macro_f1"]]
 
         wr.writerow(title)
         wr.writerow(result)

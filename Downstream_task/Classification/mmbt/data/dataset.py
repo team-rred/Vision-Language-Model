@@ -174,6 +174,10 @@ class JsonlDatasetSNUH(Dataset):
             # label[
             #     self.args.labels.index(str(self.data[index]['label']))
             # ] = 1
+        elif self.args.task_type == "binary":
+            if self.data[index]['label'] != 0:
+                self.data[index]['label'] = 1
+            label = self.args.labels.index(str(self.data[index]['label']))
         else:
             input("이거는 multilabel 학습 아니니 다시 돌리세요~")
             pass
@@ -231,7 +235,11 @@ class JsonlDatasetSNUH(Dataset):
         from collections import Counter
 
         label_freqs = Counter()
-        data_labels = [str(line["label"]) for line in self.data]
+        if self.args.task_type == "classification":
+            data_labels = [str(line["label"]) for line in self.data]
+        elif self.args.task_type == "binary":
+            data_labels = ["1" if line["label"]!=0 else "0" for line in self.data]
+            
         if type(data_labels) == list:
             for label_row in data_labels:
                 if label_row == '':
