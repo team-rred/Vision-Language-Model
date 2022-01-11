@@ -2,6 +2,7 @@ bi/*
 par/*
 CNN_BERT/
 data/mimic-cxr/*
+**/__pycache__/
 data_parsing/
 Downstream_task/Classification/mmbt/output/*
 Downstream_task/Classification/mmbt/wandb/

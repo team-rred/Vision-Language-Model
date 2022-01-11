@@ -65,13 +65,13 @@ def get_args(parser):
     parser.add_argument("--Valid_dset_name", type=str, default='dev.jsonl',
                         help="valid dset for mimic")
                         
-    parser.add_argument("--Train_dset0_name", type=str, default='train_12_29_normal.jsonl',
+    parser.add_argument("--Train_dset0_name", type=str, default='train_01_10_normal.jsonl',
                         help="train dset for mimic")
-    parser.add_argument("--Valid_dset0_name", type=str, default='dev_12_29_normal.jsonl',
+    parser.add_argument("--Valid_dset0_name", type=str, default='dev_01_10_normal.jsonl',
                         help="valid dset for mimic")
-    parser.add_argument("--Train_dset1_name", type=str, default='train_12_29_error.jsonl',
+    parser.add_argument("--Train_dset1_name", type=str, default='train_01_10_error_binary.jsonl',
                         help="train dset for mimic")
-    parser.add_argument("--Valid_dset1_name", type=str, default='dev_12_29_error.jsonl',
+    parser.add_argument("--Valid_dset1_name", type=str, default='dev_01_10_error_binary.jsonl',
                         help="valid dset for mimic")
 ##########################
 ##########################
