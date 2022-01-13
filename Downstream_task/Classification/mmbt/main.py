@@ -87,11 +87,11 @@ def get_args(parser):
     parser.add_argument("--drop_img_percent", type=float, default=0.0)
     parser.add_argument("--dropout", type=float, default=0.1)
 
-    parser.add_argument("--freeze_img", type=int, default=0)
-    parser.add_argument("--freeze_txt", type=int, default=0)
+    parser.add_argument("--freeze_img", type=int, default=3)
+    parser.add_argument("--freeze_txt", type=int, default=5)
 
-    parser.add_argument("--freeze_img_all", type=str, default=True)
-    parser.add_argument("--freeze_txt_all", type=str, default=True)
+    parser.add_argument("--freeze_img_all", type=str, default=False)
+    parser.add_argument("--freeze_txt_all", type=str, default=False)
 
     parser.add_argument("--glove_path", type=str, default="/path/to/glove_embeds/glove.840B.300d.txt")
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
